@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: micro-ingress
+spec:
+  rules:
+    - host: microservice-1
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: micro-deployment-1-service
+                port:
+                  number: 8080
+    - host: microservice-2
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: micro-deployment-2-service
+                port:
+                  number: 8080
